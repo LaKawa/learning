@@ -18,4 +18,14 @@ public class CollectionExpressions
    List<char> _oldList = new List<char> { 'a', 'b', 'c' };
    private List<char> _somewhatOldList = new() { 'a', 'b', 'c' };
    private List<char> _newList = ['a', 'b', 'c']; // collection expression
+
+   private static void PrintList(List<char> list)
+   {
+      foreach (var item in list)
+      {
+         Console.WriteLine(item);
+      }
+   }
+
+   public static void PrintWithCollectionExpression() => PrintList(['a', 'b', 'c']);  // can omit type where compiler can infer it
 }

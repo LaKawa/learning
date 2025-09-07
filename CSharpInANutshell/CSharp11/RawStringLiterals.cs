@@ -9,20 +9,20 @@
 /// </summary>
 public class RawStringLiterals
 {
-    string _raw = """<file path=""C:\temp\test.txt"" />""";
+    private const string Raw = """<file path=""C:\temp\test.txt"" />""";
 
-    string _rawMultiLine = $"""
-                            Line 1
-                            Line 2
-                            The date and time is {DateTime.Now}.
-                            """;
+    private readonly string _rawMultiLine = $"""
+                                             Line 1
+                                             Line 2
+                                             The date and time is {DateTime.Now}.
+                                             """;
 
-    private string _rawMultiInterpolation = $$"""{ "TimeStamp": "{{DateTime.Now}}" }""";
+    private readonly string _rawMultiInterpolation = $$"""{ "TimeStamp": "{{DateTime.Now}}" }""";
 
 
     public void Print()
     {
-        Console.WriteLine(_raw);
+        Console.WriteLine(Raw);
         Console.WriteLine(_rawMultiLine);
         Console.WriteLine(_rawMultiInterpolation);
     }
