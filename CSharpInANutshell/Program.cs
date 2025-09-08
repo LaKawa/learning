@@ -3,4 +3,9 @@
 using CSharpInANutshell.Basics;
 
 Console.WriteLine("Hello, World!");
-NumericTypes.Print();
+BitwiseOperations.PrintComplement();
+BitwiseOperations.PrintAnd();
+BitwiseOperations.PrintOr();
+BitwiseOperations.PrintXor();
+
+//NumericTypes.PrintSizes();

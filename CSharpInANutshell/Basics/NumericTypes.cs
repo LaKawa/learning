@@ -31,7 +31,13 @@ public static class NumericTypes
         PrintHexadecimal();
         PrintBinary();
     }
-
+    
+    // 1111 0000
+    // 0011 0011
+    
+    // 1111
+    // 1101
+    // 1101
 
     public static void PrintSizes()
     {
