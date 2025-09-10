@@ -2,7 +2,4 @@
 
 using CSharpInANutshell.Basics;
 
-CharactersAndStrings.PrintChar();
-CharactersAndStrings.PrintEncoding();
-
-ArraysBasics.PrintMultiDimensional();
+ArraysBasics.PrintJagged();

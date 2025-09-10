@@ -24,6 +24,11 @@ public static class ArraysBasics
         Index first = 0;
         Index last = ^1;
         Range range = first..last; // gets everything except the last element
+
+        Console.WriteLine("One can shorten array expression, either by leaving out the new operator and type qualification.");
+        Console.WriteLine("char[] vowels = {'a', 'e', 'i', 'o', 'u'}; - since C#12 ['a'...] is also valid");
+        Console.WriteLine("Or by using var and then only new without the type qualifier.");
+        Console.WriteLine("var vowels = new[] {'a', 'e', 'i', 'o', 'u'};");
     }
 
     public static void PrintMultiDimensional()
@@ -43,8 +48,31 @@ public static class ArraysBasics
             for(var j = 0; j < twoDimensionalMatrix.GetLength(1); j++)
                 Console.Write($"{twoDimensionalMatrix[i, j]} ");
         }
-            
-        Console.WriteLine("\n");
+        Console.WriteLine("\n------------------\n");
     }
 
+    public static void PrintJagged()
+    {
+        Console.WriteLine("Jagged arrays are arrays of arrays.");
+        var jaggedArray = new int[3][];
+        Console.WriteLine("new int[3][] - left = outermost dimension - fits three arrays");
+        Console.WriteLine("Inner array length is unspecified, as it can differ between arrays.");
+        Console.WriteLine("Each inner array is implicitly initialized to null and must be manually created.");
+        for (var i = 0; i < jaggedArray.Length; i++)
+        {
+            jaggedArray[i] = new int[i + 1];
+            for (var j = 0; j < jaggedArray[i].Length; j++)
+                jaggedArray[i][j] = i * jaggedArray[i].Length + j;
+        }
+        foreach (var innerArr in jaggedArray)
+        {
+            Console.WriteLine();
+            foreach (var number in innerArr)
+                Console.Write($"{number} ");
+        }
+
+        Console.WriteLine("Jagged arrays can be initialized with explicit values.");
+        Console.WriteLine("new int [][] { new int[] {1, 2, 3}, new int[] {4, 5, 6}};");
+        Console.WriteLine("\n------------------\n");
+    }
 }
