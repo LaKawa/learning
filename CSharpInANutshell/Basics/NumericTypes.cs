@@ -107,4 +107,26 @@ public static class NumericTypes
         Console.WriteLine($"1100_0010: 0b{0b1100_0010:b8}\n\n");
     }
 
+    public static void PrintFloatAndDoubleSpecialValues()
+    {
+        Console.WriteLine("Floats and Doubles have special values.");
+        Console.WriteLine("NaN - Not a Number");
+        var d = double.NaN;
+        Console.WriteLine("To check if it's NaN, use double.IsNaN");
+        Console.WriteLine(double.NaN);
+        Console.WriteLine($"Is double d NaN? {double.IsNaN(d)}\n");
+        
+        Console.WriteLine("Infinity - Positive or negative infinity");
+        Console.WriteLine($"Positive infinity: {double.PositiveInfinity} Negative Infinity: {double.NegativeInfinity}\n");
+        
+        Console.WriteLine("Negative Zero - Negative zero");
+        Console.WriteLine($"Negative zero: {double.NegativeZero}\n");
+
+        Console.WriteLine("Dividing a nonzero number by zero/negative zero results in an infinite value.");
+        Console.WriteLine("Dividing zero by zero, or subtracting infinity from infinity results in a NaN.\n");
+        
+        Console.WriteLine("When using ==, NaN is never equal to another value, not even another NaN value!!!");
+        Console.WriteLine("When comparing with object.Equals, two NaN numbers return equal.\n\n");
+    }
+
 }

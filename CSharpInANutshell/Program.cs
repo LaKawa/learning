@@ -2,10 +2,7 @@
 
 using CSharpInANutshell.Basics;
 
-Console.WriteLine("Hello, World!");
-BitwiseOperations.PrintComplement();
-BitwiseOperations.PrintAnd();
-BitwiseOperations.PrintOr();
-BitwiseOperations.PrintXor();
+CharactersAndStrings.PrintChar();
+CharactersAndStrings.PrintEncoding();
 
-//NumericTypes.PrintSizes();
+ArraysBasics.PrintMultiDimensional();
