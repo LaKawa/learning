@@ -2,4 +2,8 @@
 
 using CSharpInANutshell.Basics;
 
-StatementsAndExpressions.PrintFibonacci(100);
+var myTestType = new CreatingTypes(42, true, "potato");
+
+var (a, b, c) = myTestType;
+Console.WriteLine(b);
+Console.WriteLine(a);
