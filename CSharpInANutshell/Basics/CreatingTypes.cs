@@ -5,6 +5,9 @@ public class CreatingTypes
     private int _myLocalInt;
     private bool _myLocalBool;
     private string _myLocalString;
+
+    public string Name;
+    public CreatingTypes BestFriendOfSameType;
     
     public static void PrintBasics()
     {
@@ -51,5 +54,11 @@ public class CreatingTypes
     public void Deconstruct(out int myInt)
     {
         myInt = _myLocalInt;
+    }
+
+    public void MeetNewBestFriend(CreatingTypes newBestFriend)
+    {
+        BestFriendOfSameType = newBestFriend;
+        newBestFriend.BestFriendOfSameType = this; // "this" refers to the instance the method was called on
     }
 }
