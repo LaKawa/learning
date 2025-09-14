@@ -43,6 +43,8 @@ public class CreatingTypes(string primaryConstructorParameter)
         Console.WriteLine("It is called either when the first static method of the type is called, or the type is initialized.");
         Console.WriteLine("-----------");
     }
+    
+    ~CreatingTypes() => Console.WriteLine("Destructor called! - Compiler overrides Finalize(), calls base.Finalize() after this call.");
     public static void PrintBasics()
     {
         Console.WriteLine("The most common kind of reference type is the class.");
