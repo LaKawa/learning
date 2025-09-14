@@ -1,7 +1,14 @@
 ﻿namespace CSharpInANutshell.Basics;
 
-public class CreatingTypes
+public class CreatingTypes(string primaryConstructorParameter)
 {
+    // can use primary constructor arguments to populate fields or properties
+    // if we use exactly the same name, field masks/hides the argument elsewhere in the code
+    // unless if on the right of an assignment operator
+    private readonly string _primaryConstructorParameter = (primaryConstructorParameter == null) ?
+        throw new ArgumentNullException(nameof(primaryConstructorParameter)) : 
+        primaryConstructorParameter.ToUpper();
+    
     private int _myLocalInt;
     private bool _myLocalBool;
     private string _myLocalString = "Wasn't set in constructor.";
@@ -31,8 +38,10 @@ public class CreatingTypes
         }
     }
 
-    // when one constructor calls another, the called one is executed first
-    public CreatingTypes(int someInt)
+    // When one constructor calls another, the called one is executed first.
+    // Because we have a primary constructor, each additional custom constructor has to first call the primary constructor.
+    // Due to chaining, we only need to do it from the deepest constructor as it's called by all other constructors
+    public CreatingTypes(int someInt) : this("Hello World!")
     {
         _myLocalInt = someInt;
         Console.WriteLine("int constructor called!");
