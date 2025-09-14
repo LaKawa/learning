@@ -8,6 +8,9 @@ public class CreatingTypes(string primaryConstructorParameter)
     private readonly string _primaryConstructorParameter = (primaryConstructorParameter == null) ?
         throw new ArgumentNullException(nameof(primaryConstructorParameter)) : 
         primaryConstructorParameter.ToUpper();
+
+    public string PrimaryConstructorParameterProp { get; set; } 
+        = primaryConstructorParameter;
     
     private int _myLocalInt;
     private bool _myLocalBool;
@@ -23,6 +26,23 @@ public class CreatingTypes(string primaryConstructorParameter)
     public string Name = "JohnOfUs";
     public CreatingTypes? BestFriendOfSameType;
     
+    [System.Runtime.CompilerServices.ModuleInitializer]
+    internal static void InitAssembly()
+    {
+        Console.WriteLine("-----------");
+        Console.WriteLine("InitAssembly called!");
+        Console.WriteLine("Since C#9 we can add static void methods with the [ModuleInitializer] attribute (System.Runtime.CompilerServices)");
+        Console.WriteLine("These methods are called when the assembly is first loaded.");
+        Console.WriteLine("-----------");
+    }
+    static CreatingTypes()
+    {
+        Console.WriteLine("-----------");
+        Console.WriteLine("Static constructor of CreatingTypes called.");
+        Console.WriteLine("There can only be one static constructor per type, it has to be parameterless.");
+        Console.WriteLine("It is called either when the first static method of the type is called, or the type is initialized.");
+        Console.WriteLine("-----------");
+    }
     public static void PrintBasics()
     {
         Console.WriteLine("The most common kind of reference type is the class.");
