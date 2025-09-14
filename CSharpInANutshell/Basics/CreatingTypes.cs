@@ -4,10 +4,17 @@ public class CreatingTypes
 {
     private int _myLocalInt;
     private bool _myLocalBool;
-    private string _myLocalString;
+    private string _myLocalString = "Wasn't set in constructor.";
 
-    public string Name;
-    public CreatingTypes BestFriendOfSameType;
+    // we can implement an Indexer by defining a property called 'this'
+    public char this[int index] => _myLocalString[index];
+    
+    // we can also support Index and Range type
+    public char this[Index index] => _myLocalString[index];
+    public string this[Range range] => _myLocalString[range];
+
+    public string Name = "JohnOfUs";
+    public CreatingTypes? BestFriendOfSameType;
     
     public static void PrintBasics()
     {
