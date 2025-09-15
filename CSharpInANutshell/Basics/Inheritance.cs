@@ -64,14 +64,31 @@ public class Inheritance
 public class Asset
 {
     public string Name;
+    public virtual void Print() => Console.WriteLine($"Asset Print was called! Name = {Name}");
+
+    public virtual Asset Copy() => new Asset { Name = Name };
 }
 
 public class Stock : Asset
 {
     public long SharesOwned;
+
+    // this allows for polymorphism - if a Stock is cast to an Asset and Print() is called,
+    // it will call the override on the Stock type
+    public override void Print() =>
+        Console.WriteLine($"Overriden Stock Print! Name = {Name}, Shares owned: {SharesOwned}");
+
+    // since C#9 we can use covariant return types
+    // => derived classes can use a more derived return type than their base class
+    public override Stock Copy() => new Stock { Name = Name, SharesOwned = SharesOwned };
 }
 
 public class House : Asset
 {
+    // no override for Print() specified, uses the Asset Print() method
     public decimal Mortgage;
+    
+    // before C#9, override had to return the same type as base class
+    // => explicit downcast to use as House was mandatory
+    public override Asset Copy() => new House { Name = Name, Mortgage = Mortgage };
 }
