@@ -1,6 +1,12 @@
 // ReSharper disable once CheckNamespace
 namespace CSharpInANutshell.Basics.NamespaceExample.InnerNamespace;
 
+// extern alias AssemblyName; - allows explicitly referencing other assemblies
+// alias also has to be added in the csproj file
+
+// using static declaration imports type instead of namespace
+using static System.Console;
+
 public class InnerNamespace
 {
     private OuterNamespace _outer; // outer namespace is accessible from inner namespace
@@ -11,11 +17,13 @@ public class InnerNamespace
     // The outer variable has to be accessed with full qualification.
     static void PrintMyInt()
     {
-        Console.WriteLine($"MyInt: {MyInt}");
+        System.Console.WriteLine($"MyInt: {MyInt}");
     }
 
     static void PrintOuterMyInt()
-    {
-        Console.WriteLine($"MyOuterInt: {OuterNamespace.MyInt}");
+    { 
+        WriteLine($"MyOuterInt: {OuterNamespace.MyInt}");
+        WriteLine(typeof(Console));
+        
     }
 }
