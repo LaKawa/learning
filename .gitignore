@@ -66,3 +66,8 @@ nohup.out
 *.db
 *.db-shm
 *.db-wal
+
+# Vim swap files - created by vim for session backup in case of crash 
+*.swo
+*.swp
+*.swn

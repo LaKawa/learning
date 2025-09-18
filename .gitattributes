@@ -1,0 +1,24 @@
+# Auto-detect text files, normalize to LF by default
+* text=auto eol=lf
+
+# Force Windows line endings for solution and project files
+*.sln text eol=crlf
+*.csproj text eol=crlf
+*.props text eol=crlf
+*.targets text eol=crlf
+
+# C# and code files should always use LF
+*.cs text eol=lf
+*.csx text eol=lf
+*.xaml text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.xml text eol=lf
+*.md text eol=lf
+
+# Scripts
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+
