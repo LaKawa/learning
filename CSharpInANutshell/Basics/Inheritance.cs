@@ -63,6 +63,8 @@ public class Inheritance
 
 public class Asset
 {
+    public Asset(){ Name = "Asset";}
+    public Asset(string name) => Name = name;
     public string Name;
     public virtual void Print() => Console.WriteLine($"Asset Print was called! Name = {Name}");
 
@@ -73,6 +75,9 @@ public class Asset
 public class Stock : Asset
 {
     public long SharesOwned;
+
+    // we are forced to call explicit base constructor if no parameterless constructor exists
+    public Stock() : base("Stock"){}
 
     // this allows for polymorphism - if a Stock is cast to an Asset and Print() is called,
     // it will call the override on the Stock type
@@ -93,7 +98,6 @@ public class House : Asset
     // "base" keyword allows calling a base class method
     // this way we can add extra behavior in the derived class
     public override decimal Liability => base.Liability + Mortgage;
-    
     // before C#9, override had to return the same type as base class
     // => explicit downcast to use as House was mandatory
     public override Asset Copy() => new House { Name = Name, Mortgage = Mortgage };
