@@ -102,3 +102,39 @@ public class House : Asset
     // => explicit downcast to use as House was mandatory
     public override Asset Copy() => new House { Name = Name, Mortgage = Mortgage };
 }
+
+
+public class BaseClass
+{
+    // required members need to be initialized via object initializer...
+    public required string Name;
+    // ...unless specifying a constructor with the SetsRequiredMembers attribute
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+    public BaseClass(string name) => Name = name;
+    
+    // by defining a parameterless constructor, subclasses don't need to call the specialized constructor
+    // and still have to initialize all required members
+    public BaseClass(){}
+}
+
+public class DerivedClass : BaseClass
+{
+    // using this requires setting the required members via object initializer
+    public DerivedClass(){}
+    
+    // using this requires an attribute, as it's present in the base class   
+    [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+    public DerivedClass(string name) : base(name)
+    {
+        
+    }
+}
+
+public class CallerTest
+{
+    // name has to be initialized due to the required keyword
+    // object initializer
+    DerivedClass _derived = new(){Name="aName"};
+    // [SetsRequiredMembers] constructor
+    private DerivedClass _derived2 = new("anotherName");
+}
