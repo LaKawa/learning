@@ -108,12 +108,13 @@ public class BaseClass
 {
     // required members need to be initialized via object initializer...
     public required string Name;
+    
     // ...unless specifying a constructor with the SetsRequiredMembers attribute
     [System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
     public BaseClass(string name) => Name = name;
     
     // by defining a parameterless constructor, subclasses don't need to call the specialized constructor
-    // and still have to initialize all required members
+    // and still have to initialize all required members via object initializer syntax
     public BaseClass(){}
 }
 
@@ -129,6 +130,12 @@ public class DerivedClass : BaseClass
         
     }
 }
+
+// Primary constructors can also be called from subclasses
+public class PrimaryBaseClass(int a)
+{  }
+public class PrimaryDerivedClass(int a, int b) : PrimaryBaseClass(a)
+{ }
 
 public class CallerTest
 {
