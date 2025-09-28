@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using CSharpInANutshell.Basics;
+using CSharpInANutshell.Experiments.InterfaceOverriding;
+using InterfaceOverridingCaller = CSharpInANutshell.Experiments.InterfaceOverriding.Caller;
 
 Inheritance inheritance = new();
 inheritance.Upcast(inheritance.Stock, inheritance.House);
@@ -26,4 +28,7 @@ if (copiedHouse is House)
     Console.WriteLine(((House)copiedHouse).GetType().Name);
 }
 
-
+// can set required members via {} or parameterless constructor
+//InterfaceOverridingCaller caller = new();
+var caller2 = new InterfaceOverridingCaller{};
+caller2.PrintExample();
