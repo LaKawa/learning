@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using CSharpInANutshell.Basics;
+using CSharpInANutshell.Experiments.EnumUsage;
 using CSharpInANutshell.Experiments.InterfaceOverriding;
 using InterfaceOverridingCaller = CSharpInANutshell.Experiments.InterfaceOverriding.Caller;
 
@@ -32,3 +33,6 @@ if (copiedHouse is House)
 //InterfaceOverridingCaller caller = new();
 var caller2 = new InterfaceOverridingCaller{};
 caller2.PrintExample();
+
+var side = BorderSide.Left;
+var alignment = (Alignment)side;
