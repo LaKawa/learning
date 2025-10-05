@@ -36,3 +36,6 @@ caller2.PrintExample();
 
 var side = BorderSide.Left;
 var alignment = (Alignment)side;
+
+var permissions = FilePermissions.Write | FilePermissions.Delete;
+Console.WriteLine(permissions.ToString());

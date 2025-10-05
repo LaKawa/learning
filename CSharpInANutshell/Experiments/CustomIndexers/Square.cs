@@ -3,11 +3,11 @@ namespace CSharpInANutshell.Experiments.CustomIndexers;
 
 internal readonly struct Square
 {
-    internal int File { get; init; }      // 0 - 7 (a - h)
-    internal int Rank { get; init; }      // 0 - 7 (1 - 8)
+    internal int File { get; }      // 0 - 7 (a - h)
+    internal int Rank { get; }      // 0 - 7 (1 - 8)
     
-    public PieceColor Color { get; init; } = PieceColor.None;
-    public Piece Piece { get; init; } = Piece.None;
+    public PieceColor Color { get; } = PieceColor.None;
+    public Piece Piece { get; } = Piece.None;
 
     public string Name => $"{(char)('a' + File)}{Rank + 1}";
 
@@ -15,7 +15,7 @@ internal readonly struct Square
         ? Name
         : $"{Piece.ToSymbol()}{Name}";
 
-    // avoided optional parameters in case we make this public
+    // avoided optional parameters in case we make this public (prevent user dll recompilation on change)
     // could also use factory methods and keep constructor internal / private
     internal Square(int file, int rank) : this(file, rank, PieceColor.None, Piece.None)
     {
