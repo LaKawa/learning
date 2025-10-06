@@ -1,13 +1,19 @@
 // ReSharper disable MemberCanBePrivate.Global
 namespace CSharpInANutshell.Experiments.CustomIndexers;
 
-internal readonly struct Square
+/*TODO: refactor this into a class - heap overhead is negligible for 64 squares,
+ and easier to handle than ref structs - immutable struct lead to 2 new square copies on every move
+ */
+
+// TODO: eventually implement super tight 64-bit board approach to allow memory efficient chess engine calculation
+
+internal class Square
 {
     internal int File { get; }      // 0 - 7 (a - h)
     internal int Rank { get; }      // 0 - 7 (1 - 8)
     
-    public PieceColor Color { get; } = PieceColor.None;
-    public Piece Piece { get; } = Piece.None;
+    public PieceColor Color { get; private set; } 
+    public Piece Piece { get; private set; }
 
     public string Name => $"{(char)('a' + File)}{Rank + 1}";
 
@@ -29,6 +35,16 @@ internal readonly struct Square
         Rank = rank;
         Color = color;
         Piece = piece;
+    }
+
+    internal static Square CreateEmpty(int file, int rank)
+    {
+        return new Square(file, rank) { Color = PieceColor.Black };
+    }
+
+    internal static Square CreateWithPiece(int file, int rank, PieceColor color, Piece piece)
+    {
+        return new Square(file, rank, color, piece);
     }
 
     private static void ValidateArguments(int file, int rank, PieceColor color, Piece piece)
