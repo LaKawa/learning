@@ -1,6 +1,6 @@
 namespace CSharpInANutshell.Experiments.CustomIndexers;
 
-internal enum Piece
+public enum Piece
 {
     None,
     Pawn,
@@ -11,7 +11,7 @@ internal enum Piece
     King
 }
 
-internal static class PieceExtensions
+public static class PieceExtensions
 {
     public static char ToSymbol(this Piece piece) => piece switch
     {

@@ -1,6 +1,6 @@
 namespace CSharpInANutshell.Experiments.CustomIndexers;
 
-internal enum PieceColor
+public enum PieceColor
 {
     None,
     White,

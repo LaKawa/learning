@@ -1,10 +1,6 @@
 // ReSharper disable MemberCanBePrivate.Global
 namespace CSharpInANutshell.Experiments.CustomIndexers;
 
-/*TODO: refactor this into a class - heap overhead is negligible for 64 squares,
- and easier to handle than ref structs - immutable struct lead to 2 new square copies on every move
- */
-
 // TODO: eventually implement super tight 64-bit board approach to allow memory efficient chess engine calculation
 
 internal class Square
@@ -20,6 +16,8 @@ internal class Square
     public string FullName => Piece == Piece.None
         ? Name
         : $"{Piece.ToSymbol()}{Name}";
+
+    public SquareInfo ToInfo() => new(File, Rank, Color, Piece);
 
     // avoided optional parameters in case we make this public (prevent user dll recompilation on change)
     // could also use factory methods and keep constructor internal / private
