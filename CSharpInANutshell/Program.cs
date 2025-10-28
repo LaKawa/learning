@@ -3,7 +3,11 @@
 using CSharpInANutshell.Basics;
 using CSharpInANutshell.Experiments.EnumUsage;
 using CSharpInANutshell.Experiments.InterfaceOverriding;
+using CSharpInANutshell.Experiments.QuickTests;
+using BaseClass = CSharpInANutshell.Experiments.InitializationOrder.BaseClass;
 using InterfaceOverridingCaller = CSharpInANutshell.Experiments.InterfaceOverriding.Caller;
+using DC = CSharpInANutshell.Experiments.InitializationOrder.DerivedClass;
+using CSharpInANutshell.Basics.Delegates;
 
 Inheritance inheritance = new();
 inheritance.Upcast(inheritance.Stock, inheritance.House);
@@ -39,3 +43,14 @@ var alignment = (Alignment)side;
 
 var permissions = FilePermissions.Write | FilePermissions.Delete;
 Console.WriteLine(permissions.ToString());
+
+var initTest = new DC(11);
+
+var s = "Hello";
+s.PrintNTimes(5);
+
+BaseClass bc = new(42);
+bc.PrintBaseClass(5);
+
+DelegateCreator.CreateAndPrintExamples();
+
